@@ -1,6 +1,7 @@
 <?php
     session_start();
     $conn =mysqli_connect('chinmaya1.c2fxijcqvhul.ap-south-1.rds.amazonaws.com','admin','Chinmaya','situ');
+    // CONNECT USING AWS RDS- RDS END POINT- DTABASE MASTER NAME- DATABASE PASSWORD- DB NAME
     if($conn)
     {
         ?>
