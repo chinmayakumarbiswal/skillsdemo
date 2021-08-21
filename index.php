@@ -1,6 +1,6 @@
 <?php
     session_start();
-    $conn =mysqli_connect('localhost','root','','skill');
+    $conn =mysqli_connect('chinmaya1.c2fxijcqvhul.ap-south-1.rds.amazonaws.com','admin','Chinmaya','situ');
     if($conn)
     {
         ?>
@@ -55,13 +55,17 @@
               Login
             </button>
             
+            <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#signme">
+              Signup
+            </button>
+            
           </form>
         </div>
       </nav>
 
 
 
-      <!-- Modal -->
+      <!-- Modal 1 -->
       <div class="modal fade" id="logme" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
           <div class="modal-content">
@@ -90,7 +94,7 @@
                       $umail=mysqli_real_escape_string($conn, $_POST['emailin']);
                       $pwd=mysqli_real_escape_string($conn, $_POST['passin']);
                       //$pawd= md5($pwd);
-                      echo "$umail";
+                      
                       $query="SELECT * FROM userdt WHERE email='$umail' && pass='$pwd'";
                       $data=mysqli_query($conn, $query);
                       $total=mysqli_num_rows($data);
@@ -120,6 +124,81 @@
 
 
 
+      <!-- Modal 2 -->
+      <div class="modal fade" id="signme" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Signup</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form action="" method="post">
+              <div class="modal-body">
+                <div class="mb-3">
+                  <label for="formGroupExampleInput" class="form-label">Email </label>
+                  <input type="text" class="form-control" id="formGroupExampleInput" placeholder="situ@chinmayakumarbiswal.in" name="emailin">
+                </div>
+                <div class="mb-3">
+                  <label for="formGroupExampleInput2" class="form-label">Password</label>
+                  <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="password" name="passin">
+                </div>
+              </div>
+              <div class="modal-footer">
+                <input type="submit" class="btn btn-info" value="Signup" name="sineinto" />
+              </div>
+            </form>
+              <?php
+                if(isset($_POST['sineinto']))
+                  {
+                      $umail=mysqli_real_escape_string($conn, $_POST['emailin']);
+                      $pwd=mysqli_real_escape_string($conn, $_POST['passin']);
+                      //$pawd= md5($pwd);
+                      
+                      $emailquery= "SELECT * FROM userdt WHERE email='$umail' ";
+                      $inquery=mysqli_query($conn, $emailquery);
+                      $emailcount=mysqli_num_rows($inquery);
+                      
+                      if($emailcount>0)
+                      {
+                          ?>
+                                <script>
+                                    alert("Email already exist");
+                                </script>
+                            <?php
+                      }
+                      else
+                      {
+                        $insertquery= " insert into userdt (email,pass) values('$umail', '$pwd')";
+                          $iquery=mysqli_query($conn,$insertquery);
+                          if($iquery)
+                            {
+                             
+                                ?>
+                                  <script>
+                                      alert("Inserted Successful");
+                                  </script>
+                                <?php
+                            }
+                            else
+                            {
+                                ?>
+                                  <script>
+                                      alert("Connection Faild Error. Please contact us using whatsapp or any social address so we can solve it");
+                                  </script>
+                                <?php
+                            }
+                      }
+                  }  
+              ?>
+
+            
+          </div>
+        </div>
+      </div>
+
+
+
+
 
       <main>
         <section class="banner">
@@ -132,7 +211,7 @@
                             <h3>World's Next</h3>
                             
                             <p class="desc">
-                                Hello! i'm Chinmaya Kumar Biswal a student and a fontend web developer. Studied Cloud Technology And Information Security at Centurion University of Technology and Management with an interest in System Admin and Web development.
+                                
                             </p>
                             
                         </div>
