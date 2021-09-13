@@ -1,7 +1,6 @@
 <?php
     session_start();
-    $conn =mysqli_connect('chinmaya1.c2fxijcqvhul.ap-south-1.rds.amazonaws.com','admin','Chinmaya','situ');
-    // CONNECT USING AWS RDS- RDS END POINT- DTABASE MASTER NAME- DATABASE PASSWORD- DB NAME
+    $conn =mysqli_connect('chinmaya.c2fxijcqvhul.ap-south-1.rds.amazonaws.com','admin','Chinmaya','situ');
     if($conn)
     {
         ?>
@@ -32,33 +31,32 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
     <title>CLOUD</title>
+    <link href="bgcolor.css" rel="stylesheet">
     <style>
       body
       {
         background-image: linear-gradient(to right, #ff0dff, #00e7ef, #ff06d5, #00e7ef, #ff0dff);
       }
-      .banner
-      {
-        
-        
-      }
+      
     </style>
   </head>
   <body>
-      <nav class="navbar navbar-light bg-transparent">
+   
+    <nav class="navbar navbar-light bg-transparent">
         <div class="container">
           <a class="navbar-brand" href="#">
             <img src="https://chinmayakumarbiswal.in/favicon.ico" alt="" width="30" height="24">
             CHINMAYA
           </a>
           <form class="d-flex" id>
-            <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#logme">
+            <button type="button" class="btn bg-gradient-primary" data-bs-toggle="modal" data-bs-target="#logme">
               Login
             </button>
             
-            <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#signme">
+            <button type="button" class="btn bg-gradient-info" data-bs-toggle="modal" data-bs-target="#signme">
               Signup
             </button>
+            
             
           </form>
         </div>
@@ -69,9 +67,9 @@
       <!-- Modal 1 -->
       <div class="modal fade" id="logme" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
-          <div class="modal-content">
+          <div class="modal-content bg-gradient-primary">
             <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLabel">Login</h5>
+              <h5 class="modal-title text-info text-gradient" id="exampleModalLabel">Login</h5>
               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <form action="" method="post">
@@ -191,8 +189,6 @@
                       }
                   }  
               ?>
-
-            
           </div>
         </div>
       </div>
